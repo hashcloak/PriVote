@@ -12,5 +12,6 @@
 .footer {
   padding: 1rem;
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 </style>

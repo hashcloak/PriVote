@@ -12,6 +12,6 @@
 .description-box {
   padding: 1rem;
   border-left: 4px solid;
-  background-color: white;
+  font-family: Arial, Helvetica, sans-serif;
 }
 </style>

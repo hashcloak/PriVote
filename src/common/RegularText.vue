@@ -10,8 +10,6 @@
 
 <style scoped>
 .regular-text {
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  font-family: Arial, Helvetica, sans-serif;
 }
 </style>

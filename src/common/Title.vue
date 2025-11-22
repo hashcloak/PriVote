@@ -10,9 +10,6 @@
 
 <style scoped>
 .title {
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
 }
 </style>
