@@ -10,6 +10,9 @@ import ErrorBox from "@/common/ErrorBox.vue";
 import Vote from "@/sections/Vote.vue";
 import {createAztecNodeClient} from "@aztec/aztec.js/node";
 import {TestWallet} from "@aztec/test-wallet/client/lazy";
+import {getInitialTestAccountsData} from "@aztec/accounts/testing";
+import {getPXEConfig} from "@aztec/pxe/config";
+import {LeanIMTContract} from "@/sections/bindings/LeanIMT";
 
 const boxStatus = ref<"idle" | "success" | "error">("idle");
 const resultMessage = ref("");
@@ -37,9 +40,17 @@ async function handleRegisterClick() {
     if (verified) {
       boxStatus.value = "success";
       resultMessage.value = "We confirmed that you have a valid passport. You are ready to vote! Your unique identifier is:\n" + uniqueIdentifier;
-      const node = createAztecNodeClient("http://localhost:8080");
-      const wallet = await TestWallet.create(node);
+      const node = createAztecNodeClient("https://devnet.aztec-labs.com/");
+      const config = getPXEConfig();
+      config.proverEnabled = true;
+
+      const wallet = await TestWallet.create(node, config);
       console.log("wallet created...")
+      const [aliceAccount, bobAccount] = await getInitialTestAccountsData();
+      let alice = await wallet.createSchnorrAccount(aliceAccount.secret, aliceAccount.salt);
+      const leanImt = await LeanIMTContract.deploy(wallet).send({from: aliceAccount.address})
+          .deployed();
+      console.log("leanImt deployed...")
 
     } else {
       boxStatus.value = "error";

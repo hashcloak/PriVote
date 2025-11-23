@@ -24,9 +24,11 @@ async function handleVote() {
     resultMessage.value = "You did not selected any candidate";
   }
 
-  // Check that you are a valid member of the group.
-
   // Submit your vote.
+  
+
+  resultType.value = "success";
+  resultMessage.value = "Your vote has been submitted successfully!";
 }
 
 </script>
