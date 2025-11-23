@@ -1,6 +1,6 @@
 [package]
 name = "aztec_voting"
-type = "bin"
+type = "contract"
 authors = ["HashCloak"]
 
 [dependencies]
