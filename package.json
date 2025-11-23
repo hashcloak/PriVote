@@ -12,6 +12,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@aztec/accounts": "3.0.0-nightly.20251122",
+    "@aztec/aztec.js": "3.0.0-nightly.20251122",
+    "@aztec/noir-contracts.js": "3.0.0-nightly.20251122",
+    "@aztec/test-wallet": "3.0.0-nightly.20251122",
+    "@aztec/kv-store": "3.0.0-nightly.20251122",
+    "@aztec/pxe": "3.0.0-nightly.20251122",
+    "@aztec/bb.js": "3.0.0-nightly.20251122",
     "@zkpassport/sdk": "^0.12.4",
     "qrcode": "^1.5.4",
     "vue": "^3.5.22",
@@ -21,6 +28,7 @@
     "@types/qrcode": "^1.5.6",
     "@vitejs/plugin-vue": "^6.0.1",
     "vite": "^7.1.11",
+    "vite-plugin-node-polyfills": "^0.24.0",
     "vite-plugin-vue-devtools": "^8.0.3"
   }
 }

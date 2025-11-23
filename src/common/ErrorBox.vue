@@ -16,7 +16,9 @@ defineProps({
 <style scoped>
 .error-box {
   background-color: #e59898;
-  border: 1px solid #b33f3f;
+  border: 3px solid #b33f3f;
   color: #681515;
+  padding: 1rem;
+  border-radius: 10px;
 }
 </style>

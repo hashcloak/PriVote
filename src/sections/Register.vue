@@ -7,17 +7,19 @@ import qrcode from "qrcode";
 import {ref} from "vue";
 import SuccessBox from "@/common/SuccessBox.vue";
 import ErrorBox from "@/common/ErrorBox.vue";
+import Vote from "@/sections/Vote.vue";
 
 const boxStatus = ref<"idle" | "success" | "error">("idle");
 const resultMessage = ref("");
 
 async function handleRegisterClick() {
+  boxStatus.value = "idle"
   const zkPassport = new ZKPassport();
   const queryBuilder = await zkPassport.request({
-        name: "imin",
+        name: "PriVote",
         purpose: "Prove that you have a valid passport to vote.",
         scope: "valid-passport",
-        logo: "/hashcloak.png",
+        logo: "https://hashcloak.com/logos/hashcloak_logo_colour-logo-text.png",
       }
   );
   const {
@@ -26,13 +28,13 @@ async function handleRegisterClick() {
     onError,
   } = queryBuilder.done();
 
-  await qrcode.toCanvas(document.getElementById("canvas"), url);
+  await qrcode.toCanvas(document.getElementById("qr-canvas"), url);
 
-  onResult(async ({uniqueIdentifier, verified, _,}) => {
+  onResult(async ({uniqueIdentifier, verified,}) => {
     console.log("Verified:", verified);
     if (verified) {
       boxStatus.value = "success";
-      resultMessage.value = "Registered. Unique identifier:" + uniqueIdentifier;
+      resultMessage.value = "We confirmed that you have a valid passport. You are ready to vote! Your unique identifier is:\n" + uniqueIdentifier;
     } else {
       boxStatus.value = "error";
       resultMessage.value = "Not verified.";
@@ -48,31 +50,30 @@ async function handleRegisterClick() {
 
 <template>
   <Content>
-    <Title>Register</Title>
+    <Title>Step 1: Register</Title>
     <RegularText>
       First, you need to prove that you are a HUMAN. This is done by using ZKPassport. ZKPassport allows you to prove
       that you have a valid passport without revealing your private data on it.
 
     </RegularText>
 
-    <button class="button" @click="handleRegisterClick">Register</button>
+    <button @click="handleRegisterClick">Register</button>
 
-    <div class="image">
-      <canvas id="canvas"></canvas>
+    <div class="qr">
+      <canvas id="qr-canvas"></canvas>
     </div>
 
-    <SuccessBox :message="resultMessage" v-if="boxStatus == 'success'"/>
-    <ErrorBox :message="resultMessage" v-else-if="boxStatus == 'error'"/>
+    <SuccessBox :message="resultMessage" v-if="boxStatus === 'success'"/>
+    <ErrorBox :message="resultMessage" v-else-if="boxStatus === 'error'"/>
+
+    <Vote v-if="boxStatus === 'success'"/>
   </Content>
 </template>
 
 <style scoped>
-.image {
-  align-content: center;
+.qr {
+  margin: auto;
+  text-align: center;
   padding: 1rem;
-}
-
-.button {
-  margin: 1rem;
 }
 </style>

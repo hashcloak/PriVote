@@ -3,25 +3,20 @@ import Footer from "@/common/Footer.vue";
 import RegularText from "@/common/RegularText.vue";
 import Title from "@/common/Title.vue";
 import Content from "@/common/Content.vue";
+import Register from "@/sections/Register.vue";
 </script>
 
 <template>
-  <header class="main-header">
-    <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/register">Register</RouterLink>
-      <RouterLink to="/vote">Vote</RouterLink>
-    </nav>
-  </header>
-
   <Content>
-    <Title>ImIn</Title>
+    <Title>PriVote</Title>
     <RegularText>
-      ImIn is a privacy-preserving voting system implemented in the <a href="https://aztec.network/">Aztec Network</a>,
-      in which you can do voting while protecting your identity. The privacy preserving voting is powered by a Semaphore
-      implementation in the Aztec Network. BUT before you vote, we need to verify that you are a HUMAN! This is done by
-      using <a href="https://zkpassport.id/">ZKPassport</a>.
+      PriVote is a privacy-preserving voting system implemented in the <a href="https://aztec.network/">Aztec
+      Network</a>, in which you can do voting while protecting your identity. The privacy preserving voting is powered
+      by a Semaphore implementation in the Aztec Network. BUT before you vote, we need to verify that you are a HUMAN!
+      This is done by using <a href="https://zkpassport.id/">ZKPassport</a>.
     </RegularText>
+
+    <Register/>
   </Content>
   <main>
     <RouterView/>
