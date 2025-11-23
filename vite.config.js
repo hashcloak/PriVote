@@ -42,5 +42,14 @@ export default defineConfig({
             include: ['i18n-iso-countries', 'node_modules', 'pino'],
             transformMixedEsModules: true
         }
-    }
+    },
+    server: {
+        proxy: {
+            '/api': {
+                target: 'http://localhost:8080',
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/api/, ''),
+            },
+        },
+    },
 })

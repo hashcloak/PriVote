@@ -8,6 +8,8 @@ import {ref} from "vue";
 import SuccessBox from "@/common/SuccessBox.vue";
 import ErrorBox from "@/common/ErrorBox.vue";
 import Vote from "@/sections/Vote.vue";
+import {createAztecNodeClient} from "@aztec/aztec.js/node";
+import {TestWallet} from "@aztec/test-wallet/client/lazy";
 
 const boxStatus = ref<"idle" | "success" | "error">("idle");
 const resultMessage = ref("");
@@ -35,6 +37,10 @@ async function handleRegisterClick() {
     if (verified) {
       boxStatus.value = "success";
       resultMessage.value = "We confirmed that you have a valid passport. You are ready to vote! Your unique identifier is:\n" + uniqueIdentifier;
+      const node = createAztecNodeClient("http://localhost:8080");
+      const wallet = await TestWallet.create(node);
+      console.log("wallet created...")
+
     } else {
       boxStatus.value = "error";
       resultMessage.value = "Not verified.";

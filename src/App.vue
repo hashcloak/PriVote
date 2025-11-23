@@ -8,9 +8,9 @@ import Register from "@/sections/Register.vue";
 
 <template>
   <Content>
-    <Title>PriVote</Title>
+    <Title>humanvoting</Title>
     <RegularText>
-      PriVote is a privacy-preserving voting system implemented in the <a href="https://aztec.network/">Aztec
+      humanvoting is a privacy-preserving voting system implemented in the <a href="https://aztec.network/">Aztec
       Network</a>, in which you can do voting while protecting your identity. The privacy preserving voting is powered
       by a Semaphore implementation in the Aztec Network. BUT before you vote, we need to verify that you are a HUMAN!
       This is done by using <a href="https://zkpassport.id/">ZKPassport</a>.

@@ -12,14 +12,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@aztec/accounts": "3.0.0-devnet.5",
-    "@aztec/aztec.js": "3.0.0-devnet.5",
-    "@aztec/noir-contracts.js": "3.0.0-devnet.5",
-    "@aztec/test-wallet": "3.0.0-devnet.5",
-    "@aztec/kv-store": "3.0.0-devnet.5",
-    "@aztec/pxe": "3.0.0-devnet.5",
-    "@aztec/bb.js": "3.0.0-devnet.5",
+    "@aztec/accounts": "^3.0.0-devnet.5",
+    "@aztec/aztec.js": "^3.0.0-devnet.5",
+    "@aztec/test-wallet": "^3.0.0-devnet.5",
     "@zkpassport/sdk": "^0.12.4",
+    "bb3.js": "npm:@aztec/bb.js@^3.0.0-devnet.5",
     "qrcode": "^1.5.4",
     "vue": "^3.5.22",
     "vue-router": "^4.6.3"
